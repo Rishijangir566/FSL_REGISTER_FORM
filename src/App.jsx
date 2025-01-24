@@ -2,8 +2,8 @@ import { useState } from "react"
 
 function App() {
   const [ischecked, setIschecked] = useState(false);
-  const [showPopup , setShowPopup]=useState(false)
-  const [change , setChange]=useState(false)
+  const [showPopup, setShowPopup] = useState(false)
+  const [change, setChange] = useState(false)
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -21,25 +21,25 @@ function App() {
     qualification: "",
     year: "",
     college: "",
-    company:"",
+    company: "",
     course: "",
     source: "",
     friendName: "",
   });
 
-  const [aadharPreview,setAadharPreview]=useState({
-    front:null,
-    back:null
+  const [aadharPreview, setAadharPreview] = useState({
+    front: null,
+    back: null
   })
 
-  function handleToggleChange(){
+  function handleToggleChange() {
     setShowPopup(true)
     setIschecked(!ischecked)
   }
 
   function handleInputChange(e) {
     const { name, value, type, checked, files } = e.target;
-    
+
     if (type === "file" && files?.length) {
       const file = files[0];
       const reader = new FileReader();
@@ -73,16 +73,16 @@ function App() {
       }));
     }
   }
-  
+
   function handleFormSubmit(e) {
     e.preventDefault();
-    console.log("Form Values :",formValues)
+    console.log("Form Values :", formValues)
   }
-  
+
   function handlePopupAgree() {
-     setIschecked(true);
-     setShowPopup(false)
-     setChange(!change);
+    setIschecked(true);
+    setShowPopup(false)
+    setChange(!change);
   }
 
   function handlePopupCancel() {
@@ -95,11 +95,12 @@ function App() {
 
   return (
     <>
-      <h2 className="text-center text-3xl font-bold my-4"> FSL Registeration Form</h2>
-      <form onSubmit={handleFormSubmit} className="mx-16">
-
-        <div className="personalDetail " >
-          <h1 className="text-2xl font-medium bg-gray-600 pl-8 py-2 font-serif"> Personal Detail</h1>
+    <div className="screen w-[100%] bg-stone-300">
+      <h2 className="text-center text-3xl font-bold py-4"> FSL Registeration Form</h2>
+      <form onSubmit={handleFormSubmit} className="mx-[8rem] bg-stone-300">
+       <div>
+        <div className="personalDetail border " >
+          <h1 className="text-2xl font-medium bg-gray-500 rounded-md text-white pl-8 py-2 font-serif"> Personal Detail</h1>
           <div className="name flex gap-6 my-4 mx-6">
             <label className="w-40 ml-4 font-medium" >Name  </label>
             <input type="text"
@@ -181,45 +182,46 @@ function App() {
           <div className="flex gap-6 mx-6 my-4">
             <label className="w-40 ml-4 font-medium"> Aadhar Card</label>
             <span className="flex gap-4 ">
-            <div>
-              <input
-                type="file"
-                name="aadharFront"
-                className="border w-[24.5rem]"
-                // value={formValues.aadharBack} // ye glti nhi krnii
-                onChange={handleInputChange}
-              />
-               {aadharPreview.front && (
-                <img
-                  src={aadharPreview.front}
-                  alt="Aadhaar Front Preview"
-                  className="mt-2  w-[150px] h=[150px] border"
+              <div>
+                <input
+                  type="file"
+                  name="aadharFront"
+                  className="border w-[24.5rem]"
+                  // value={formValues.aadharBack} // ye glti nhi krnii
+                  onChange={handleInputChange}
                 />
-               )}
+                {aadharPreview.front && (
+                  <img
+                    src={aadharPreview.front}
+                    alt="Aadhaar Front Preview"
+                    className="mt-2  w-[150px] h=[150px] border"
+                  />
+                )}
               </div>
 
               <div>
-              <input type="file"
-                name="aadharBack"
-                className="w-[24.5rem] border "
-                // value={formValues.aadharBack} // ye glti nhi krnii
-                onChange={handleInputChange}
-              />
-              {aadharPreview.back && (
-                <img src={aadharPreview.back} 
-                alt="Aadhar Back Preview"
-                className="mt-2 w-[150px] h=[150px] border " />
-              )}
+                <input type="file"
+                  name="aadharBack"
+                  className="w-[24.5rem] border "
+                  // value={formValues.aadharBack} // ye glti nhi krnii
+                  onChange={handleInputChange}
+                />
+                {aadharPreview.back && (
+                  <img src={aadharPreview.back}
+                    alt="Aadhar Back Preview"
+                    className="mt-2 w-[150px] h=[150px] border " />
+                )}
 
               </div>
             </span>
 
           </div>
+          </div>
 
 
           {/* //////////// Parent/Guardian Details  ////////// */}
-          <div className="parent/gaurdian-details  mt-8">
-            <h1 className="text-2xl font-medium bg-gray-600 pl-8 py-2 font-serif"> Parent/ Guardian Details</h1>
+          <div className="parent/gaurdian-details border rounded-md  mt-8">
+            <h1 className="text-2xl font-medium bg-gray-500 text-white rounded-md pl-8 py-2 font-serif"> Parent/ Guardian Details</h1>
 
             <div className="flex gap-6 mx-6 my-6">
               <label className="w-40 ml-4  font-medium">
@@ -250,8 +252,8 @@ function App() {
           </div>
 
           {/* Residential Details */}
-          <div className="Residential-details mt-8">
-            <h1 className="text-2xl font-medium bg-gray-600 pl-8 py-2 font-serif">
+          <div className="Residential-details border mt-8">
+            <h1 className="text-2xl font-medium bg-gray-500 rounded-md text-white  pl-8 py-2 font-serif">
               Residential Details</h1>
 
             <div className="flex gap-6 my-6 ml-6">
@@ -293,8 +295,8 @@ function App() {
 
 
           {/* Education Details */}
-          <div className="Education-details mt-8 ">
-            <h1 className="text-2xl font-medium bg-gray-600 pl-8 py-2 font-serif">Education Details</h1>
+          <div className="Education-details border mt-8 ">
+            <h1 className="text-2xl font-medium bg-gray-500 text-white rounded-md pl-8 py-2 font-serif">Education Details</h1>
             <hr />
             <div className="flex gap-6 mx-6 my-6">
               <label className="w-40 font-medium ml-4">
@@ -325,88 +327,88 @@ function App() {
             </div>
             {formValues.status === "student" && (
               <>
-            <div className="flex gap-6 mx-6 my-4">
-              <label className="w-40 font-medium ml-4">
-                Last Attended Qualification
-              </label>
-              <input
-                type="text"
-                name="qualification"
-                placeholder="Enter your qualification"
-                className="border w-[50rem] px-2 h-7"
-                value={formValues.qualification}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="flex gap-6 mx-6 my-6">
-              <label className="w-40 font-medium ml-4">
-                Year
-              </label>
-              <input
-                type="number"
-                name="year"
-                placeholder="Enter your completion year"
-                className="border w-[50rem] px-2"
-                value={formValues.year}
-                onChange={handleInputChange}
-              />
-            </div>
+                <div className="flex gap-6 mx-6 my-4">
+                  <label className="w-40 font-medium ml-4">
+                    Last Attended Qualification
+                  </label>
+                  <input
+                    type="text"
+                    name="qualification"
+                    placeholder="Enter your qualification"
+                    className="border w-[50rem] px-2 h-7"
+                    value={formValues.qualification}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="flex gap-6 mx-6 my-6">
+                  <label className="w-40 font-medium ml-4">
+                    Year
+                  </label>
+                  <input
+                    type="number"
+                    name="year"
+                    placeholder="Enter your completion year"
+                    className="border w-[50rem] px-2"
+                    value={formValues.year}
+                    onChange={handleInputChange}
+                  />
+                </div>
 
-            
-              <div className="flex gap-6 my-6 mx-6">
-                <label htmlFor="college" className="w-40  font-medium ml-4">
-                  College / University
-                </label>
-                <input
-                  type="text"
-                  name="college"
-                  placeholder="College / University"
-                  className="border w-[50rem] px-2"
-                  value={formValues.college}
-                  onChange={handleInputChange}
-                />
-              </div>
+
+                <div className="flex gap-6 my-6 mx-6">
+                  <label htmlFor="college" className="w-40  font-medium ml-4">
+                    College / University
+                  </label>
+                  <input
+                    type="text"
+                    name="college"
+                    placeholder="College / University"
+                    className="border w-[50rem] px-2"
+                    value={formValues.college}
+                    onChange={handleInputChange}
+                  />
+                </div>
               </>
             )}
 
-          {formValues.status === "WorkingProfessional" && (
+            {formValues.status === "WorkingProfessional" && (
               <>
-            <div className="flex gap-6 mx-6 my-6">
-              <label className="w-40 font-medium ml-4">
-                Company Name
-              </label>
-              <input
-                type="text"
-                name="company"
-                placeholder="Enter your Company Name"
-                className="border w-[50rem] px-2 h-7"
-                value={formValues.company}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="flex gap-6 mx-6 my-6">
-              <label className="w-40 font-medium ml-4">
-                Years Exprince
-              </label>
-              <input
-                type="number"
-                name="year"
-                placeholder="Enter years of Exprince"
-                className="border w-[50rem] px-2"
-                value={formValues.year}
-                onChange={handleInputChange}
-              />
-            </div>
+                <div className="flex gap-6 mx-6 my-6">
+                  <label className="w-40 font-medium ml-4">
+                    Company Name
+                  </label>
+                  <input
+                    type="text"
+                    name="company"
+                    placeholder="Enter your Company Name"
+                    className="border w-[50rem] px-2 h-7"
+                    value={formValues.company}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="flex gap-6 mx-6 my-6">
+                  <label className="w-40 font-medium ml-4">
+                    Years Exprince
+                  </label>
+                  <input
+                    type="number"
+                    name="year"
+                    placeholder="Enter years of Exprince"
+                    className="border w-[50rem] px-2"
+                    value={formValues.year}
+                    onChange={handleInputChange}
+                  />
+                </div>
               </>
             )}
-           
+
           </div>
 
 
 
           {/* Course Details */}
-          <div className="Course-details my-8">
-            <h1 className="text-2xl font-medium bg-gray-600 pl-8 py-2 font-serif">Course Details</h1>
+          <div className="Course-details border my-8">
+            <h1 className="text-2xl font-medium bg-gray-500 text-white rounded-md  pl-8 py-2 font-serif">Course Details</h1>
             <hr />
             <div className="flex gap-6 my-6 mx-6">
               <label className="w-40 font-medium ml-4">
@@ -505,7 +507,7 @@ function App() {
 
           {/* term and condition  */}
 
-          <div className='flex gap-6 ml-6'>
+          <div className='flex gap-6  ml-6'>
             <p className="mx-2  font-medium ml-4">Do you agree to the terms and conditions?</p>
 
 
@@ -528,41 +530,43 @@ function App() {
               ></span>
             </label>
           </div>
+          
 
           {showPopup && (
-          <div className="popup-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-            <div className="popup bg-white p-6 rounded shadow-lg text-center">
-              <h2 className="text-3xl font-semibold mb-4">Terms and Conditions</h2>
-              <p className=" text-xl my-1  text-left">
-                You agree to the following :-
-              </p>
-              <div className='w-50 my-10 text-left'>
-                
+            <div className="popup-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+              <div className="popup bg-white p-6 rounded shadow-lg text-center">
+                <h2 className="text-3xl font-semibold mb-4">Terms and Conditions</h2>
+                <p className=" text-xl my-1  text-left">
+                  You agree to the following :-
+                </p>
+                <div className='w-50 my-10 text-left'>
+
                   <li>You have understood the course content.</li>
                   <li>You have understood the course duration.</li>
                   <li>You have cleared all your doubts regarding the course,the content,and the duration.</li>
                   <li>Fees once paid is not refundable.</li>
                   <li>In case of uninformed leave, I will not be eligible for a backup.</li>
                   <li>7 days or more of leave without prior permission would result in termination of registration.</li>
-        
-              </div>
-              <div className="flex justify-center gap-4">
-                <button
-                  className="px-4 py-2 bg-green-500 text-white rounded"
-                  onClick={handlePopupAgree}
-                >
-                  Agree
-                </button>
-                <button
-                  className="px-4 py-2 bg-gray-400 text-white rounded"
-                  onClick={handlePopupCancel}
-                >
-                  Cancel
-                </button>
+
+                </div>
+                <div className="flex justify-center gap-4">
+                  <button
+                    className="px-4 py-2 bg-green-500 text-white rounded"
+                    onClick={handlePopupAgree}
+                  >
+                    Agree
+                  </button>
+                  <button
+                    className="px-4 py-2 bg-gray-400 text-white rounded"
+                    onClick={handlePopupCancel}
+                  >
+                    Cancel
+                  </button>
+                  
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
 
 
@@ -582,7 +586,7 @@ function App() {
 
 
       </form>
-
+       </div>
     </>
   )
 }
